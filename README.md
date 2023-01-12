@@ -12,3 +12,5 @@ Part Two is creating a chrome extension on top of the flask server, this way if 
 Both parts require you to set your own OPENAI_API_KEY which can be found by navigating to the links above, creating an account, and clicking create new key. The key will start with 18$ of free credits which ends up being quite a lot. Reset the key in the .env file to your API key, otherwise it create an error when accessing the OPEN AI API.
 
 This has been a long and arduous journey filled with many bugs. But enjoy!
+
+Also, don't try to use the API KEY provided, I've already revoked the key.
