@@ -1,0 +1,32 @@
+{
+    "name": "OPENAI API",
+    "description": "Extension that run's OPENAI's Chatgpt Model using your API_KEY by communicating locally on a flask development server",
+    "version": "1.0",
+    "manifest_version": 3,
+    "action": {
+      "default_popup": "templates/popup.html"
+    },
+    "icons": {
+        "16": "static/images/logo-16.png",
+        "32": "static/images/logo-32.png",
+        "48": "static/images/logo-48.png",
+        "128": "static/images/logo-128.png"
+    },
+
+    "commands": {
+        "_execute_action": {
+          "suggested_key": {
+            "default": "Ctrl+Shift+F",
+            "mac": "MacCtrl+Shift+F"
+          },
+          "description": "Opens popup.html"
+        }
+    },
+
+    "background": {
+      "service_worker": "background.js"
+    },
+
+    "host_permissions": ["https://*.openai.com/", "http://localhost/*", "http://127.0.0.1:5000/*"]
+  
+  }

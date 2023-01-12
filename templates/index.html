@@ -1,0 +1,55 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <title>OpenAI Extension</title>
+    <link
+    rel="shortcut icon"
+    href="{{ url_for('static', filename='images/logo.png') }}"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+  </head>
+  <body>
+    <nav>
+    <h3>OpenAI Extension</h3>
+    </nav>
+    <div id = "body-container">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" class="icon" /><br>
+      <form action = "/" method="POST" id="form">
+        <input type="text" id = "prompt" name="prompt" placeholder="Enter a prompt" required />
+          <div id ="menu-container">
+            <label for="menu" id = "Models_label">Model:</label>
+            <select id="menu" name = "menu">
+              {% for models in model_names %}
+              <option value="{{ models }}"> {{ models }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        <br>
+        <input type="submit" value="Generate" />
+      </form>
+    </div>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded',()=>{
+      document.getElementById("form").addEventListener("submit", function(event) {
+          if (typeof result !== 'undefined') {
+            document.getElementById("body-container").style.height = "10px";
+          }
+        });
+      });
+    </script>
+    <div id = "result-container">
+      {% if result %}
+      <h3>{{ request.args.get("model") }} Output: </h3>
+      <div class="result">{{ result }}</div>
+      {% endif %}
+    </div>
+  </body>
+  
+
+
+</html>

@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <title>OpenAI Extension</title>
+    <script src="../background.js"></script>
+  </head>
+  <body>
+    <h3>OpenAI Extension</h3>
+    <div id="body-container">
+      <form>
+        <input type="text" id="prompt" placeholder="Enter a prompt" required />
+        <select id="model">
+          <option value="text-davinci-003">Text-Davinci-003</option>
+          <option value="text-curie-001">Text-Curie-001</option>
+          <option value="text-babbage-001">Text-Babbage-001</option>
+        </select>
+        <button type="button" id="submit-button">Generate</button>
+      </form>
+    </div>
+    <div id="result-container"></div>
+    <script src ="../content.js">
+    </script>
+  </body>
+</html>

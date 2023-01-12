@@ -1,0 +1,6 @@
+flask
+os
+openai
+dotenv
+flask_cors
+dotenv
