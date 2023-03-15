@@ -1,6 +1,4 @@
 flask
-os
 openai
-dotenv
+python-dotenv
 flask_cors
-dotenv
