@@ -24,13 +24,27 @@ def index():
     if request.method == "POST":
         prompt = request.form.get("prompt")
         model = request.form.get("menu")
-        response = openai.Completion.create(
-            model=model,
-            prompt=prompt,
-            max_tokens=1000,
-            temperature=0.6,
-        )
-        return redirect(url_for("index", result=response.choices[0].text,  model=model))
+        try:
+            response = openai.Completion.create(
+                model=model,
+                prompt=prompt,
+                max_tokens=1000,
+                temperature=0.6,
+            )
+            result=response.choices[0].text
+        except:
+            try:
+                response = openai.ChatCompletion.create(
+                    model=model,
+                    messages=[
+                        {"role": "user", "content": prompt}
+                    ]
+                )
+                # access first JSON object returned, it's message, and then the contents of that message
+                result=response.choices[0]["message"]["content"]
+            except:
+                print("Error, completion model not supported")
+        return redirect(url_for("index", result=result,  model=model))
 
     result = request.args.get("result")
     return render_template("index.html", result=result, model_names=model_names)
